@@ -1,0 +1,58 @@
+@use "../../../../assets/style/variables" as *;
+
+.titleAndText {
+    padding-bottom: 50px;
+}
+
+.reviews {
+    padding-bottom: 80px;
+    padding-top: 25px;
+}
+
+.slider {
+    padding-bottom: 50px;
+    :global(.splide__arrow--prev) {
+        left: -5em !important;
+    }
+    :global(.splide__arrow--next) {
+        right: -5em !important;
+    }
+    
+    :global(.splide__pagination) {
+        bottom: -1.5em;
+    }
+    
+    @media (max-width: 1300px) {
+        :global(.splide__arrow--prev) {
+            left: 5em !important;
+        }
+        :global(.splide__arrow--next) {
+            right: 5em !important;
+        }
+    }
+    
+    @media (max-width: 980px) {
+        :global(.splide__arrow--prev) {
+            left: 4em !important;
+        }
+        :global(.splide__arrow--next) {
+            right: 4em !important;
+        }
+    }
+    
+    @media (max-width: 840px) {
+        :global(.splide__arrow--prev) {
+            left: 2em !important;
+        }
+        :global(.splide__arrow--next) {
+            right: 2em !important;
+        }
+    }
+    
+    
+    
+    
+}
+
+
+

@@ -1,0 +1,414 @@
+@use "../../../../assets/style/_variables" as *;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+.hero {
+  color: $blue;
+  padding-bottom: 40px;
+
+  .heroContainer {
+    max-width: 1690px;
+    margin: 0 auto;
+  }
+
+  .heroContent {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .heroImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .title {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: center;
+    font-family: var(--benzin-bold), sans-serif;
+    text-transform: uppercase;
+    padding-top: 260px;
+
+    .titleTop {
+      font-weight: 400;
+      color: $blue;
+      font-size: 33px;
+    }
+
+    .titleBottom {
+      color: $orange;
+      font-size: 122px;
+      line-height: 119px;
+    }
+  }
+
+  .subtitle {
+    font-size: 27px;
+    line-height: 35px;
+    max-width: 715px;
+    text-align: center;
+    margin: 30px 0px 30px;
+  }
+
+  .tourInfo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    .infoItem {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      border-radius: 44px;
+      border: 1px solid #A0A0A0;
+      background: rgba(177, 177, 177, 0.20);
+      backdrop-filter: blur(27.5px);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 0;
+
+      &:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 10px 25px rgba(160, 160, 160, 0.3);
+      }
+
+      .infoLabel {
+        font-weight: 400;
+        font-size: 15px;
+      }
+
+      .infoValue {
+        font-family: var(--gotham-bold), sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+      }
+    }
+
+    .durationItem {
+      padding: 12px 18px;
+    }
+
+    .groupSizeItem {
+      padding: 12px 35px;
+    }
+
+    .difficultyItem {
+      padding: 12px 38px;
+    }
+  }
+
+  .tourBooking {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    align-self: flex-start;
+    margin-left: 25px;
+    margin-top: 41px;
+    margin-bottom: 100px;
+
+    .bookBtn {
+      position: relative;
+      overflow: hidden;
+      border-radius: 44px;
+      background: #FAECD4;
+      border: none;
+      padding: 36px 41px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: var(--benzin-medium);
+      font-size: 20px;
+      text-transform: uppercase;
+      z-index: 1;
+      text-align: center;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(250, 236, 212, 0.6);
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -30%;
+        width: 8px;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.8);
+        filter: blur(2px);
+        transform: rotate(25deg);
+        animation: shine 2.5s infinite;
+        pointer-events: none;
+      }
+
+      @keyframes shine {
+        0% {
+          left: -30%;
+        }
+
+        100% {
+          left: 130%;
+        }
+      }
+    }
+
+
+    .tourPriceInfo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: var(--benzin-bold), sans-serif;
+      line-height: 33px;
+      text-transform: uppercase;
+
+      .priceLabel {
+        font-size: 22px;
+      }
+
+      .priceValue {
+        font-size: 33px;
+        color: $orange;
+      }
+    }
+
+  }
+
+}
+
+// Responsive styles
+
+@media (max-width: 1350px) {
+  .hero {
+    .heroImage {
+      display: none;
+    }
+
+    .title {
+      padding-top: 100px;
+    }
+
+    .heroContent {
+      display: flex ;
+    }
+
+    .tourBooking {
+      margin-left: 0;
+      align-self: center;
+    }
+  }
+}
+
+@media (max-width:800px) {
+  .hero {
+    .title {
+      .titleTop {
+        font-size: 28px;
+      }
+
+      .titleBottom {
+        font-size: 100px;
+        line-height: 70px;
+      }
+    }
+    .subtitle {
+        font-size: 23px;
+        line-height: 30px;
+        max-width: 600px;
+      }
+    .tourInfo {
+      .infoItem {
+        .infoLabel {
+          font-size: 14px;
+        }
+        .infoValue {
+          font-size: 16px;
+        }
+      }
+      .groupSizeItem {
+        padding: 8px 31px;
+      }
+      .difficultyItem {
+        padding: 8px 34px;
+      }
+    }
+    .tourBooking {
+      .bookBtn {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media (max-width:660px) {
+  .hero {
+    .title {
+      .titleTop {
+        font-size: 22px;
+      }
+
+      .titleBottom {
+        font-size: 80px;
+        line-height: 60px;
+      }
+    }
+    .subtitle {
+      font-size: 19px;
+      line-height: 25px;
+      max-width: 500px;
+    }
+    .tourInfo {
+      .infoItem {
+        .infoLabel {
+          font-size: 12px;
+        }
+        .infoValue {
+          font-size: 14px;
+        }
+      }
+      .groupSizeItem {
+        padding: 4px 27px;
+      }
+    }
+    .tourBooking {
+      .bookBtn {
+        font-size: 16px;
+        padding: 32px 37px;
+      }
+      .tourPriceInfo {
+        line-height: 25px;
+        .priceLabel {
+          font-size: 16px;
+        }
+        .priceValue {
+          font-size: 26px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width:530px) {
+  .hero {
+    .title {
+      .titleTop {
+        font-size: 18px;
+      }
+
+      .titleBottom {
+        font-size: 65px;
+        line-height: 50px;
+      }
+    }
+    .subtitle {
+      font-size: 16px;
+      max-width: 415px;
+    }
+
+    .tourInfo {
+      justify-content: center;
+    }
+
+    .tourBooking {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+
+      .bookBtn {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width:480px) {
+  .hero {
+    .tourBooking {
+      flex-direction: column-reverse;
+
+      .bookBtn {
+        padding: 28px 33px;
+      }
+
+      .priceLabel {
+        font-size: 18px;
+      }
+
+      .priceValue {
+        font-size: 28px;
+      }
+    }
+  }
+
+}
+
+@media (max-width:420px) {
+  .hero {
+    .title {
+      .titleTop {
+        font-size: 16px;
+      }
+
+      .titleBottom {
+        font-size: 55px;
+        line-height: 40px;
+      }
+    }
+
+    .subtitle {
+      font-size: 13px;
+      max-width: 340px;
+      line-height: 18px;
+    }
+  }
+
+}
+
+@media (max-width:350px) {
+  .hero {
+    .title {
+      .titleTop {
+        font-size: 13px;
+      }
+
+      .titleBottom {
+        font-size: 48px;
+        line-height: 35px;
+      }
+    }
+
+    .subtitle {
+      font-size: 12px;
+      max-width: 300px;
+      line-height: 16px;
+      margin: 20px 0;
+    }
+
+    .tourInfo {
+      .infoItem {
+        
+        .infoLabel {
+          font-size: 11px;
+        }
+        .infoValue {
+          font-size: 12px;
+          font-family: "Montserrat", sans-serif;
+        }
+      }
+      .durationItem {
+        padding: 8px 12px;
+      }
+      .groupSizeItem {
+        padding: 6px 29px;
+      }
+      .difficultyItem {
+        padding: 6px 29px;
+      }
+    }
+    
+  }
+}

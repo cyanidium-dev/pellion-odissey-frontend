@@ -1,0 +1,10 @@
+@use "../../../assets/style/variables" as *;
+
+.sectionTitle {
+    font-family: var(--benzin-bold);
+    font-size: 4rem;
+    line-height: 3.4rem;
+    text-align: center;
+    color: $orange;
+    text-transform: uppercase;
+}

@@ -1,0 +1,35 @@
+@use "./variables" as *;
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+*:focus, *:active {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+li {
+    list-style-type: none;
+}
+
+.splide__arrow svg {
+    fill: $yellow !important;
+}
+
+.splide__pagination__page {
+    background-color: $yellowSecond !important;
+}
+
+.splide__pagination__page.is-active{
+    background-color: $yellow !important;
+}

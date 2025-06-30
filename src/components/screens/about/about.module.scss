@@ -1,0 +1,123 @@
+@use "../../../assets/style/variables" as *;
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 145px;
+    margin-top: 100px;
+}
+
+.title {
+    font-size: 25px;
+    font-weight: 600;
+    color: $secondBlack;
+    margin-bottom: 20px;
+    max-width: 530px;
+}
+
+.text {
+    font-size: 18px;
+    
+    color: $black;
+    
+}
+
+.author {
+    margin-top: 30px;
+}
+
+.nameAuthor {
+    font-size: 20px;
+    font-weight: 600;
+    color: $yellow;
+}
+
+.textAuthor {
+    font-size: 14px;
+    font-weight: 400;
+    color: $black;
+}
+
+@media (max-width: 1090px) {
+    .img {
+        width: 500px;
+        height: 600px;
+    }
+    .text {
+        max-width: 415px;
+    }
+    
+}
+
+@media (max-width: 945px) {
+    .wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        
+    }
+    .text {
+        max-width: none;
+    }
+    .textWrapper {
+        max-width: 550px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+}
+
+@media (max-width:600px) {
+    .title {
+        font-size: 20px;
+        max-width: 370px;
+    }
+    .text {
+        font-size: 17px;
+        max-width: 400px;
+    }
+    .nameAuthor {
+        font-size: 18px;
+    }
+    .textAuthor {
+        font-size: 11px;
+    }
+}
+
+@media (max-width:500px) {
+    .img {
+        width: 400px;
+        height: 465px;
+    }
+    .text {
+        font-size: 14px;
+    }
+    .nameAuthor {
+        font-size: 16px;
+    }
+    .textAuthor {
+        font-size: 10px;
+    }
+}
+
+@media (max-width:415px) {
+    .img {
+        width: 350px;
+        height: 415px;
+    }
+    .author {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width:370px) {
+    .img {
+        width: 310px;
+        height: 360px;
+    }
+    .title {
+        font-size: 19px;
+        max-width: 325px;
+    }
+}

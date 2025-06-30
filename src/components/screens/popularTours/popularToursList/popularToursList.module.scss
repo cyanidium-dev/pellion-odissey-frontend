@@ -1,0 +1,154 @@
+@use "../../../../assets/style/variables" as *;
+
+.popularToursList {
+    padding-bottom: 175px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.button {
+    text-align: center;
+    width: auto !important;
+}
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 32px;
+    margin-bottom: 40px;
+    
+}
+
+.titleAndText {
+    padding-bottom: 30px;
+    width: 100%;
+}
+
+.grape {
+    position: absolute;
+    right: 0;
+    top: 1500px;
+}
+@media (max-width:1800px) {
+    .grape {
+        display: none;
+    }
+}
+
+@media (max-width:1200px) {
+    .items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 40px;
+    }
+}
+
+.slider {
+    :global(.splide__arrow--prev) {
+        left: -4em !important;
+    }
+    
+    :global(.splide__arrow--next) {
+        right: -4em !important;
+    }
+    
+    
+    :global(.splide__pagination) {
+        bottom: -1.5em !important;
+    }
+
+    @media (max-width: 1290px) {
+        :global(.splide__arrow--prev) {
+            left: 15em !important;
+        }
+        :global(.splide__arrow--next) {
+            right: 15em !important;
+        }    
+    }
+
+    
+    
+    @media (max-width: 890px) {
+        :global(.splide__arrow--prev) {
+            left: 7em !important;
+        }
+        :global(.splide__arrow--next) {
+            right: 7em !important;
+        }
+    }
+    
+   
+    
+    @media (max-width: 700px) {
+        :global(.splide__arrow--prev) {
+            left: 5em !important;
+        }
+        :global(.splide__arrow--next) {
+            right: 5em !important;
+        }
+    }
+    
+    @media (max-width: 630px) {
+        :global(.splide__arrow--prev) {
+            left: 3em !important;
+        }
+        :global(.splide__arrow--next) {
+            right: 3em !important;
+        }
+    }
+    
+    @media (max-width: 570px) {
+        :global(.splide__arrow--prev) {
+            left: 2em !important;
+        }
+        :global(.splide__arrow--next) {
+            right: 2em !important;
+        }
+        
+    }
+    
+    @media (max-width: 500px) {
+        :global(.splide__arrow--prev) {
+            left: 1em !important;
+        }
+        :global(.splide__arrow--next) {
+            right: 1em !important;
+        }
+    }
+    
+    @media (max-width: 460px) {
+        :global(.splide__arrow--prev) {
+            left: 1em !important;
+        }
+        :global(.splide__arrow--next) {
+            right: 1em !important;
+        }
+    }
+}
+
+@media (max-width:750px) {
+    .items {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width:400px) {
+    .popularToursList {
+        padding-bottom: 125px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

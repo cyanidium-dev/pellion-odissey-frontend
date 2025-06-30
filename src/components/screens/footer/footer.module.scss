@@ -1,0 +1,90 @@
+.footer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: "Sofia Sans", sans-serif;
+}
+
+.footerContacts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #000000;
+
+}
+
+.footerLogo {
+    margin-right: 60px;
+}
+
+.footerPhones {
+    font-weight: 600;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.footerPhones p {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.footerSocialNetworks {
+    display: flex;
+    gap: 10px;
+}
+
+.footerInfo {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    color: #3a3a3a;
+}
+
+.politics {
+    display: flex;
+    flex-direction: column;
+    text-decoration: underline;
+}
+
+.footerInfoText {
+    display: flex;
+    flex-direction: column;
+}
+
+.footerMail {
+    padding-top: 5px;
+}
+
+@media (max-width:870px) {
+    .footerContacts {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .footerPhones {
+        flex-direction: column;
+        align-items: center;
+    }
+    .footerLogo {
+        margin-right: 0px;
+    }
+}
+
+@media (max-width:740px) {
+    .footerInfo {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+@media (max-width:375px) {
+    .footerPhones {
+        font-size: 22px;
+    }
+    .footerPhones p {
+        font-size: 18px;
+    }
+}

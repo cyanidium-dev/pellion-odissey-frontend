@@ -1,0 +1,44 @@
+@use "../../../assets/style/variables" as *;
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $secondBlack;
+}
+
+.text {
+    color: $yellow;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+@media (max-width:760px) {
+    .title {
+        font-size: 28px !important;
+    }
+    .text {
+        font-size: 22px !important;
+    }
+}
+
+
+@media (max-width:700px) {
+    .title {
+        font-size: 27px !important;
+    }
+
+    .text {
+        font-size: 21px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 24px !important;
+    }
+
+    .text {
+        font-size: 20px !important;
+    }
+}
