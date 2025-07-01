@@ -12,6 +12,7 @@
     "@sanity/image-url": "^1.1.0",
     "@splidejs/react-splide": "^0.7.12",
     "aos": "^2.3.4",
+    "axios": "^1.10.0",
     "classnames": "^2.5.1",
     "framer-motion": "^12.4.7",
     "lucide-react": "^0.482.0",
