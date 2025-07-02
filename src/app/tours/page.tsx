@@ -5,10 +5,10 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { LittleCard } from "@/components/shared/LittleCard";
 import { Header } from "@/components/screens/header/index";
+import Loader from "@/components/shared/Loader";
 import { sendMessage } from "@/api/telegram";
 import { fetchSanityData } from "@/utils/fetchSanityData";
 import { allToursQuery } from "@/lib/queries";
-
 
 export default function AllToursPage() {
   const [tours, setTours] = useState<any[]>([]);
@@ -57,6 +57,19 @@ export default function AllToursPage() {
 
     getTours();
   }, []);
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <main className={styles.page}>
+          <section className={styles.loaderWrapper}>
+            <Loader />
+          </section>
+        </main>
+      </>
+    );
+  }
 
   if (!tours || !tours.length) return null;
 

@@ -9,6 +9,7 @@ import Image from "next/image";
 import { LittleCard, LittleCardStyles } from "@/components/shared/LittleCard";
 import { fetchSanityData } from "@/utils/fetchSanityData";
 import { allPopularToursQuery } from "@/lib/queries";
+import Loader from "@/components/shared/Loader";
 
 export const PopularToursList: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -32,6 +33,16 @@ export const PopularToursList: React.FC = () => {
     getTours();
   }, []);
 
+  // Показуємо лоадер, поки завантажуємо дані
+  if (loading) {
+    return (
+      <section className={style.popularToursList}>
+        <Loader />
+      </section>
+    );
+  }
+
+  // Якщо даних немає - не рендеримо нічого
   if (!tours.length) return null;
 
   return (
