@@ -8,8 +8,7 @@ import { PopularToursList } from "@/components/screens/popularTours/popularTours
 import { PopularToursGroup } from "@/components/screens/popularToursGroup/popularToursGroup";
 import { Reviews } from "@/components/screens/reviews/reviewsList/reviews";
 import React from "react";
-import { Founders } from "./tour/components/founders/founders";
-
+import { Founders } from "./tours/[tour]/components/founders/founders";
 
 const Page: React.FC = () => {
   return (

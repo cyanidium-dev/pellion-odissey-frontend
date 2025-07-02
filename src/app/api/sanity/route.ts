@@ -22,6 +22,7 @@ export async function POST(req: NextRequest) {
     const data = await client.fetch(query, params || {});
     return NextResponse.json(data);
   } catch (error) {
+    console.error(error);
     return NextResponse.json({ error: "Sanity query failed" }, { status: 500 });
   }
 }

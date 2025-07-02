@@ -1,22 +1,21 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import styles from './tour.module.scss';
-import {tourData} from "./data"
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { sendMessage } from '@/api/telegram';
-import { Hero } from './components/hero/hero';
-import { Description } from './components/description/description';
-import { Includes } from './components/includes/includes';
-import { Shedule } from './components/shedule/shedule';
-import { Gallery } from './components/gallery/gallery';
-import { Founders } from './components/founders/founders';
-import { Testimonials } from './components/testimonials/testimonials';
-import { Faq } from './components/faq/faq';
-import { Booking } from './components/booking/booking';
-import { Dates } from './components/dates/dates';
-
+"use client";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import styles from "./tour.module.scss";
+import { tourData } from "./data";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { sendMessage } from "@/api/telegram";
+import { Hero } from "./components/hero/hero";
+import { Description } from "./components/description/description";
+import { Includes } from "./components/includes/includes";
+import { Shedule } from "./components/shedule/shedule";
+import { Gallery } from "./components/gallery/gallery";
+import { Founders } from "./components/founders/founders";
+import { Testimonials } from "./components/testimonials/testimonials";
+import { Faq } from "./components/faq/faq";
+import { Booking } from "./components/booking/booking";
+import { Dates } from "./components/dates/dates";
 
 interface TourData {
   titleTop: string;
@@ -64,8 +63,6 @@ interface tourProps {
 }
 
 const Tour: React.FC<tourProps> = ({ tourData }) => {
-  
-
   useEffect(() => {
     AOS.init();
   }, []);
@@ -75,27 +72,27 @@ const Tour: React.FC<tourProps> = ({ tourData }) => {
       <Hero />
       <div className={styles.content}>
         {/* Description Section */}
-        <Description/>
+        <Description />
 
         {/* What's Included Section */}
-        <Includes/>
+        <Includes />
 
-         {/* Schedule Section */}
-        <Shedule/>
+        {/* Schedule Section */}
+        <Shedule />
 
         {/* Gallery Section */}
-        <Gallery/>
+        <Gallery />
 
         {/* Founders Section */}
-        <Founders/>
+        <Founders />
       </div>
-       {/* Testimonials Section */}
-      <Testimonials/>
+      {/* Testimonials Section */}
+      <Testimonials />
 
-       <div className={styles.content}>
-        <Dates/>
+      <div className={styles.content}>
+        <Dates />
         {/* FAQ Section */}
-        <Faq/>
+        <Faq />
       </div>
 
       {/* Booking Section */}

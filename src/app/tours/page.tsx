@@ -1,95 +1,29 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-'use client';
-import styles from './AllTours.module.scss';
-import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
-import { LittleCard } from '@/components/shared/LittleCard';
-import {Header} from "@/components/screens/header/index";
-import { sendMessage } from '@/api/telegram';
-
-
-const allTours = [
-  {
-    type: 'group',
-    year: '2025',
-    season: 'Весна',
-    title: 'АФРИКА: ЮАР, Ботсвана, Замбия',
-    date: '26 апреля - 7 мая 2025',
-    details: '12 дней – группа 13 человек',
-    price: '$3 900',
-    img: '/images/other/damian-patkowski-T-LfvX-7IVg-unsplash.jpg',
-    tags: ['Ботсвана', 'Замбия', 'экскурсии', 'культура'],
-  },
-  {
-    type: 'group',
-    year: '2025',
-    season: 'Весна',
-    title: 'ПЕРУ: загадки культуры и нац. парки',
-    date: '27 апреля - 10 мая 2025',
-    details: '14 дней – группа 12 человек',
-    price: '$4 200',
-    img: '/images/other/eduardo-flores-e2Jiqrl4n_g-unsplash.jpg',
-    tags: ['перу', 'южная америка', 'экскурсии', 'культура'],
-  },
-  {
-    type: 'vip',
-    year: '2025',
-    season: 'Весна',
-    title: 'ПЕРУ: долина инков, Мачу Пикчу',
-    date: '26 апреля - 5 мая 2025',
-    details: '10 дней – группа 10 человек',
-    price: '$3 400',
-    img: '/images/other/joe-green-nsy6zTjk5hM-unsplash.jpg',
-    tags: ['Expedition', 'перу', 'южная америка', 'экскурсии', 'культура'],
-  },
-  {
-    type: 'group',
-    year: '2025',
-    season: 'Лето',
-    title: 'МЕКСИКА: экспедиция в мир Майя',
-    date: '15 июля - 25 июля 2025',
-    details: '11 дней – группа 14 человек',
-    price: '$3 700',
-    img: '/images/other/deshawn-wilson-NENohXmkXMM-unsplash.jpg',
-    tags: ['мексика', 'северная америка', 'экскурсии', 'майя'],
-  },
-  {
-    type: 'vip',
-    year: '2025',
-    season: 'Зима',
-    title: 'ИСЛАНДИЯ: северное сияние и ледники',
-    date: '12 февраля - 19 февраля 2025',
-    details: '8 дней – группа 8 человек',
-    price: '$4 900',
-    img: '/images/other/harshil-gudka-pU-9BYqjhyo-unsplash.jpg',
-    tags: ['исландия', 'европа', 'природа', 'северное сияние'],
-  },
-  {
-    type: 'group',
-    year: '2026',
-    season: 'Лето',
-    title: 'АВСТРАЛИЯ: от Сиднея до Улуру',
-    date: '10 июня - 24 июня 2026',
-    details: '15 дней – группа 12 человек',
-    price: '$5 200',
-    img: '/images/other/sutirta-budiman-kjOBqwMUnWw-unsplash.jpg',
-    tags: ['австралия', 'океания', 'природа', 'города'],
-  },
-];
-
+"use client";
+import styles from "./AllTours.module.scss";
+import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
+import { LittleCard } from "@/components/shared/LittleCard";
+import { Header } from "@/components/screens/header/index";
+import Loader from "@/components/shared/Loader";
+import { sendMessage } from "@/api/telegram";
+import { fetchSanityData } from "@/utils/fetchSanityData";
+import { allToursQuery } from "@/lib/queries";
 
 export default function AllToursPage() {
-  const [phoneError, setPhoneError] = useState('');
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [comment, setComment] = useState('');
-  const [type, setType] = useState('group');
-  const [year, setYear] = useState('2025');
+  const [tours, setTours] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [phoneError, setPhoneError] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [comment, setComment] = useState("");
+  const [type, setType] = useState("групповые туры");
+  const [year, setYear] = useState("2025");
   const [seasons, setSeasons] = useState({
-    'Весна': false,
-    'Лето': false,
-    'Осень': false,
-    'Зима': false
+    весна: false,
+    лето: false,
+    осень: false,
+    зима: false,
   });
   const [isSeasonDropdownOpen, setIsSeasonDropdownOpen] = useState(false);
   const dropdownRef = useRef<any>(null);
@@ -101,12 +35,32 @@ export default function AllToursPage() {
         setIsSeasonDropdownOpen(false);
       }
     }
-    
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownRef]);
+
+  // Get all tours from cms
+  useEffect(() => {
+    const getTours = async () => {
+      try {
+        const data = await fetchSanityData(allToursQuery);
+        setTours(data);
+      } catch (error) {
+        console.error("Error fetching tours:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getTours();
+  }, []);
+
+  if (!tours || !tours.length) return null;
+
+  console.log(tours);
 
   // Get active seasons as array
   const activeSeasons = Object.entries(seasons)
@@ -114,28 +68,35 @@ export default function AllToursPage() {
     .map(([season]) => season);
 
   // Filter tours based on selected criteria
-  const filtered = allTours.filter((tour) => {
-    const matchesType = tour.type === type;
-    const matchesYear = tour.year === year;
-    const matchesSeason = activeSeasons.length === 0 || activeSeasons.includes(tour.season);
+  const filtered = tours.filter((tour) => {
+    const matchesType = tour.tourType === type;
+    console.log(matchesType);
+    const matchesYear = tour.years?.includes(year);
+    console.log(matchesYear);
+    const matchesSeason =
+      activeSeasons.length === 0 ||
+      tour.season?.some((s: string) => activeSeasons.includes(s));
+    console.log(matchesSeason);
     return matchesType && matchesYear && matchesSeason;
   });
+
+  console.log(filtered);
 
   // Toggle individual season
   const toggleSeason = (season: any) => {
     setSeasons((prev: any) => ({
       ...prev,
-      [season]: !prev[season]
+      [season]: !prev[season],
     }));
   };
 
   // Clear all season filters
   const clearAllSeasons = () => {
     setSeasons({
-      'Весна': false,
-      'Лето': false,
-      'Осень': false,
-      'Зима': false
+      весна: false,
+      лето: false,
+      осень: false,
+      зима: false,
     });
   };
 
@@ -143,7 +104,7 @@ export default function AllToursPage() {
   const removeSeason = (season: any) => {
     setSeasons((prev: any) => ({
       ...prev,
-      [season]: false
+      [season]: false,
     }));
   };
 
@@ -174,9 +135,9 @@ export default function AllToursPage() {
               </button>
               <button
                 className={`${styles.typeFilterButton} ${
-                  type === "vip" ? styles.active : ""
+                  type === "vip туры" ? styles.active : ""
                 }`}
-                onClick={() => setType("vip")}
+                onClick={() => setType("vip туры")}
               >
                 VIP ТУРЫ
               </button>
@@ -245,8 +206,8 @@ export default function AllToursPage() {
                     <label className={styles.seasonCheckboxLabel}>
                       <input
                         type="checkbox"
-                        checked={seasons["Весна"]}
-                        onChange={() => toggleSeason("Весна")}
+                        checked={!!seasons["весна"]}
+                        onChange={() => toggleSeason("весна")}
                       />
                       <span className={styles.checkmark}></span>
                       Весна
@@ -254,8 +215,8 @@ export default function AllToursPage() {
                     <label className={styles.seasonCheckboxLabel}>
                       <input
                         type="checkbox"
-                        checked={seasons["Зима"]}
-                        onChange={() => toggleSeason("Зима")}
+                        checked={!!seasons["зима"]}
+                        onChange={() => toggleSeason("зима")}
                       />
                       <span className={styles.checkmark}></span>
                       Зима
@@ -263,8 +224,8 @@ export default function AllToursPage() {
                     <label className={styles.seasonCheckboxLabel}>
                       <input
                         type="checkbox"
-                        checked={seasons["Лето"]}
-                        onChange={() => toggleSeason("Лето")}
+                        checked={!!seasons["лето"]}
+                        onChange={() => toggleSeason("лето")}
                       />
                       <span className={styles.checkmark}></span>
                       Лето
@@ -272,8 +233,8 @@ export default function AllToursPage() {
                     <label className={styles.seasonCheckboxLabel}>
                       <input
                         type="checkbox"
-                        checked={seasons["Осень"]}
-                        onChange={() => toggleSeason("Осень")}
+                        checked={!!seasons["осень"]}
+                        onChange={() => toggleSeason("осень")}
                       />
                       <span className={styles.checkmark}></span>
                       Осень
@@ -285,17 +246,23 @@ export default function AllToursPage() {
           </div>
         </section>
 
-        <section className={styles.tours}>
-          <div className={styles.toursContainer}>
-            {filtered.length > 0 ? (
-              filtered.map((item, index) => (
-                <LittleCard key={index} item={item}></LittleCard>
-              ))
-            ) : (
-              <p className={styles.noTours}>Нет туров по заданным фильтрам.</p>
-            )}
-          </div>
-        </section>
+        {loading ? (
+          <Loader />
+        ) : (
+          <section className={styles.tours}>
+            <div className={styles.toursContainer}>
+              {filtered.length > 0 ? (
+                filtered.map((item, index) => (
+                  <LittleCard key={index} item={item}></LittleCard>
+                ))
+              ) : (
+                <p className={styles.noTours}>
+                  Нет туров по заданным фильтрам.
+                </p>
+              )}
+            </div>
+          </section>
+        )}
 
         <section className={styles.customTrip} id="customTrip">
           <div className={styles.customTripContainer}>
@@ -330,8 +297,8 @@ export default function AllToursPage() {
                     setPhoneError("");
                     const message = `
                   <b>📬 Новая заявка!</b>\n\n<b>👤 Имя:</b> ${name}\n\n<b>📞 Телефон:</b> ${phone}\n\n<b>📝 Комментарий:</b> ${
-                      comment || "нету"
-                    }
+                    comment || "нету"
+                  }
                   `;
                     try {
                       await sendMessage(message);
@@ -343,9 +310,6 @@ export default function AllToursPage() {
                       return;
                     }
                   }
-
-                  
-                  
                 }}
               >
                 <input

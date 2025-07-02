@@ -1,5 +1,5 @@
-@use "../../../../assets/style/_variables" as *;
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@use "../../../../../assets/style/_variables" as *;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 .hero {
   color: $blue;
@@ -65,8 +65,8 @@
       justify-content: center;
       text-align: center;
       border-radius: 44px;
-      border: 1px solid #A0A0A0;
-      background: rgba(177, 177, 177, 0.20);
+      border: 1px solid #a0a0a0;
+      background: rgba(177, 177, 177, 0.2);
       backdrop-filter: blur(27.5px);
       transition: all 0.4s ease;
       position: relative;
@@ -116,7 +116,7 @@
       position: relative;
       overflow: hidden;
       border-radius: 44px;
-      background: #FAECD4;
+      background: #faecd4;
       border: none;
       padding: 36px 41px;
       cursor: pointer;
@@ -133,7 +133,7 @@
       }
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         top: -50%;
         left: -30%;
@@ -157,7 +157,6 @@
       }
     }
 
-
     .tourPriceInfo {
       display: flex;
       flex-direction: column;
@@ -175,9 +174,7 @@
         color: $orange;
       }
     }
-
   }
-
 }
 
 // Responsive styles
@@ -193,7 +190,7 @@
     }
 
     .heroContent {
-      display: flex ;
+      display: flex;
     }
 
     .tourBooking {
@@ -203,7 +200,7 @@
   }
 }
 
-@media (max-width:800px) {
+@media (max-width: 800px) {
   .hero {
     .title {
       .titleTop {
@@ -216,10 +213,10 @@
       }
     }
     .subtitle {
-        font-size: 23px;
-        line-height: 30px;
-        max-width: 600px;
-      }
+      font-size: 23px;
+      line-height: 30px;
+      max-width: 600px;
+    }
     .tourInfo {
       .infoItem {
         .infoLabel {
@@ -244,7 +241,7 @@
   }
 }
 
-@media (max-width:660px) {
+@media (max-width: 660px) {
   .hero {
     .title {
       .titleTop {
@@ -292,7 +289,7 @@
   }
 }
 
-@media (max-width:530px) {
+@media (max-width: 530px) {
   .hero {
     .title {
       .titleTop {
@@ -325,7 +322,7 @@
   }
 }
 
-@media (max-width:480px) {
+@media (max-width: 480px) {
   .hero {
     .tourBooking {
       flex-direction: column-reverse;
@@ -343,10 +340,9 @@
       }
     }
   }
-
 }
 
-@media (max-width:420px) {
+@media (max-width: 420px) {
   .hero {
     .title {
       .titleTop {
@@ -365,10 +361,9 @@
       line-height: 18px;
     }
   }
-
 }
 
-@media (max-width:350px) {
+@media (max-width: 350px) {
   .hero {
     .title {
       .titleTop {
@@ -390,7 +385,6 @@
 
     .tourInfo {
       .infoItem {
-        
         .infoLabel {
           font-size: 11px;
         }
@@ -409,6 +403,5 @@
         padding: 6px 29px;
       }
     }
-    
   }
 }

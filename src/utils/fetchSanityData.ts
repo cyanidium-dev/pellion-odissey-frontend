@@ -20,6 +20,7 @@ export const fetchSanityData = async (
 
     return response.data;
   } catch (error) {
+    console.error(error);
     throw new Error("Failed to fetch Sanity data");
   }
 };

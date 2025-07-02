@@ -1,4 +1,4 @@
-@use "../../../../assets/style/_variables" as *;
+@use "../../../../../assets/style/_variables" as *;
 
 .gallery {
   padding: 200px 0;
@@ -100,81 +100,78 @@
     }
   }
   .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  cursor: zoom-out;
-  padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    cursor: zoom-out;
+    padding: 20px;
 
-  animation: fadeIn 0.3s ease;
+    animation: fadeIn 0.3s ease;
 
-  @media(max-width:720px) {
-    padding: 0;
+    @media (max-width: 720px) {
+      padding: 0;
+    }
   }
-}
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-  to {
-    opacity: 1;
+
+  .modalContent {
+    position: relative;
+    max-width: 95vw;
+    max-height: 90vh;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: $shadow-hover;
+    animation: scaleIn 0.3s ease;
   }
-}
 
-.modalContent {
-  position: relative;
-  max-width: 95vw;
-  max-height: 90vh;
-  overflow: hidden;
-  border-radius: 16px;
-  box-shadow: $shadow-hover;
-  animation: scaleIn 0.3s ease;
-
-  
-}
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
-  to {
-    transform: scale(1);
-    opacity: 1;
+
+  .fullImage {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
   }
-}
 
-.fullImage {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 12px;
-}
+  .closeButton {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: transparent;
+    color: white;
+    font-size: 2.4rem;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
 
-.closeButton {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  background: transparent;
-  color: white;
-  font-size: 2.4rem;
-  border: none;
-  cursor: pointer;
-  z-index: 1000;
-
-  &:hover {
-    color: $orange;
+    &:hover {
+      color: $orange;
+    }
   }
-}
-
 
   @media (max-width: 1880px) {
     .parrot {
