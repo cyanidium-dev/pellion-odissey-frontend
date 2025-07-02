@@ -1,4 +1,4 @@
-@use "../../../../assets/style/_variables" as *;
+@use "../../../../../assets/style/_variables" as *;
 
 .founders {
   padding: 120px 20px;
@@ -84,10 +84,10 @@
   .nameLeft {
     top: 12px;
     left: 12px;
-    @media (max-width:415px) {
+    @media (max-width: 415px) {
       left: -25px;
     }
-    @media (max-width:415px) {
+    @media (max-width: 415px) {
       top: 0;
     }
     @media (max-width: 320px) {
@@ -140,7 +140,7 @@
     transition: all 0.3s ease;
 
     &::before {
-      content: '•';
+      content: "•";
       position: absolute;
       left: 0;
       color: $orange;

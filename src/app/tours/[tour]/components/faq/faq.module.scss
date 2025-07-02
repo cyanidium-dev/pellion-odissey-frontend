@@ -1,5 +1,5 @@
-@use "../../../../assets/style/_variables" as *;
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@use "../../../../../assets/style/_variables" as *;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 .faqSection {
   max-width: 720px;
@@ -7,7 +7,6 @@
   position: relative;
   padding-top: 0;
   padding-bottom: 150px;
-
 }
 
 .title {
@@ -100,15 +99,15 @@
     font-size: 17px;
   }
 
-  @media (max-width:450px) {
+  @media (max-width: 450px) {
     padding: 14px 18px;
     font-size: 15px;
   }
 }
 
 .icon {
-  height: 40px; 
-  width: 40px; 
+  height: 40px;
+  width: 40px;
   font-size: 24px;
   transition: transform 0.3s ease;
   background-color: $accent-color;
@@ -119,7 +118,6 @@
   justify-content: center;
   flex-shrink: 0;
   cursor: pointer;
-
 }
 
 .faqItem.open .icon {
@@ -137,14 +135,13 @@
     margin: 0;
     font-size: 16px;
     line-height: 1.5;
-  @media (max-width:480px ) {
-    font-size: 14px;
+    @media (max-width: 480px) {
+      font-size: 14px;
+    }
+    @media (max-width: 340px) {
+      font-size: 13px;
+    }
   }
-  @media (max-width:340px ) {
-    font-size: 13px;
-  }
-  }
-  
 }
 
 .faqItem.open .answer {

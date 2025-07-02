@@ -1,8 +1,7 @@
-@use "../../../../assets/style/_variables" as *;
+@use "../../../../../assets/style/_variables" as *;
 
 .includes {
   padding: 350px 0;
-
 
   .includesList {
     display: grid;
@@ -40,32 +39,31 @@
     }
   }
 
-  @media (max-width:830px) {
-
+  @media (max-width: 830px) {
     .includesList {
       grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     }
   }
 
-  @media (max-width:730px) {
+  @media (max-width: 730px) {
     .title {
       font-size: 3.5rem;
     }
   }
 
-  @media (max-width:620px) {
+  @media (max-width: 620px) {
     .title {
       font-size: 3rem;
     }
   }
 
-  @media (max-width:530px) {
+  @media (max-width: 530px) {
     .title {
       font-size: 2.8rem;
     }
   }
 
-  @media (max-width:500px) {
+  @media (max-width: 500px) {
     padding: 225px 0;
     .title {
       font-size: 2.4rem;
@@ -73,7 +71,7 @@
     }
   }
 
-  @media (max-width:440px) {
+  @media (max-width: 440px) {
     .title {
       font-size: 2rem;
       line-height: 2rem;
@@ -92,7 +90,7 @@
     }
   }
 
-  @media (max-width:420px) {
+  @media (max-width: 420px) {
     .includesList {
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       margin-top: 30px;

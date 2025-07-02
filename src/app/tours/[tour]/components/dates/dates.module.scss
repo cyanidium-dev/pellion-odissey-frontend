@@ -1,4 +1,4 @@
-@use "../../../../assets/style/_variables" as *;
+@use "../../../../../assets/style/_variables" as *;
 
 .dates {
   padding-bottom: 200px;
@@ -44,7 +44,7 @@
       }
     }
     @media (max-width: 450px) {
-        margin-top: 20px;
+      margin-top: 20px;
     }
   }
 
@@ -68,8 +68,8 @@
       scroll-snap-align: start;
       flex-shrink: 0;
     }
-    @media (max-width:360px) {
-        min-width:fit-content;
+    @media (max-width: 360px) {
+      min-width: fit-content;
     }
   }
 
@@ -98,56 +98,56 @@
     }
   }
 
-  @media (max-width:680px) {
+  @media (max-width: 680px) {
     .title {
-        font-size: 3.6rem;
+      font-size: 3.6rem;
     }
   }
 
-  @media (max-width:610px) {
+  @media (max-width: 610px) {
     .title {
-        font-size: 3.4rem;
+      font-size: 3.4rem;
     }
   }
 
-  @media (max-width:570px) {
+  @media (max-width: 570px) {
     .title {
-        font-size: 3.2rem;
+      font-size: 3.2rem;
     }
   }
 
-  @media (max-width:550px) {
+  @media (max-width: 550px) {
     .title {
-        font-size: 3rem;
-        line-height: 3rem;
+      font-size: 3rem;
+      line-height: 3rem;
     }
   }
 
-  @media (max-width:540px) {
+  @media (max-width: 540px) {
     .title {
-        font-size: 2.6rem;
-        line-height: 2.6rem;
+      font-size: 2.6rem;
+      line-height: 2.6rem;
     }
   }
 
-  @media (max-width:450px) {
+  @media (max-width: 450px) {
     .title {
-        font-size: 2.2rem;
-        line-height: 2.2rem;
+      font-size: 2.2rem;
+      line-height: 2.2rem;
     }
   }
 
-  @media (max-width:390px) {
+  @media (max-width: 390px) {
     .title {
-        font-size: 2rem;
-        line-height: 2rem;
+      font-size: 2rem;
+      line-height: 2rem;
     }
   }
 
-  @media (max-width:355px) {
+  @media (max-width: 355px) {
     .title {
-        font-size: 1.8rem;
-        line-height: 1.8rem;
+      font-size: 1.8rem;
+      line-height: 1.8rem;
     }
   }
 }

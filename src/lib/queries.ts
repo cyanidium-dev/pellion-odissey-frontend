@@ -8,6 +8,7 @@ export const allToursQuery = `
       "days": duration.days,
       "nights": duration.nights
     },
+    "group": group,
     "gallery": gallery[].asset->url,
     "tourDates": tourDates[]{
       startDate,
@@ -15,6 +16,7 @@ export const allToursQuery = `
     },
     "tourType": tourType,
     "season": season,
+    "years": years,
     "hashtags": hashtags
   }
 `;

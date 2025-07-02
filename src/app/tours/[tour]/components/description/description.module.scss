@@ -1,10 +1,8 @@
-@use "../../../../assets/style/variables" as *;
+@use "../../../../../assets/style/variables" as *;
 
 .description {
   padding-top: 360px;
   padding-bottom: 70px;
-
-
 
   .palm {
     position: absolute;
@@ -13,18 +11,17 @@
     left: -194px;
     animation: peekingOutPalm 2.5s infinite alternate ease-in-out;
     filter: blur(2px);
-
   }
 
   @keyframes peekingOutPalm {
     0% {
-    transform: rotateZ(55deg);
+      transform: rotateZ(55deg);
     }
     100% {
-    transform: rotateZ(43deg);
+      transform: rotateZ(43deg);
     }
   }
-  
+
   .descriptionText {
     font-size: 1.3rem;
     line-height: 1.8;
@@ -34,7 +31,7 @@
     color: $blue;
   }
 
-  @media (max-width:900px) {
+  @media (max-width: 900px) {
     .palm {
       width: 300px;
       height: 300px;
@@ -42,8 +39,7 @@
       left: -110px;
     }
   }
-  @media (max-width:700px) {
-
+  @media (max-width: 700px) {
     padding-top: 300px;
     .palm {
       width: 300px;
@@ -56,14 +52,14 @@
     }
   }
 
-  @media (max-width:600px) {
+  @media (max-width: 600px) {
     .palm {
       bottom: -300px;
       left: -110px;
     }
   }
 
-  @media (max-width:490px) {
+  @media (max-width: 490px) {
     padding-top: 30px;
     .palm {
       display: none;
@@ -78,7 +74,7 @@
     }
   }
 
-  @media (max-width:420px) {
+  @media (max-width: 420px) {
     .descriptionText {
       font-size: 0.9rem;
       line-height: 1.2rem;
@@ -87,11 +83,5 @@
     .descriptionTitle {
       font-size: 40px;
     }
-    
   }
 }
-
-
-
-
-
