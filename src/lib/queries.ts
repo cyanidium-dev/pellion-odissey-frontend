@@ -17,7 +17,32 @@ export const allToursQuery = `
     "tourType": tourType,
     "season": season,
     "years": years,
-    "hashtags": hashtags
+    "hashtags": hashtags,
+    "isPopular": isPopular
+  }
+`;
+
+export const allPopularToursQuery = `
+  *[_type == "tour" && isPopular == true] | order(_createdAt desc) {
+    "id": _id,
+    "slug": slug.current,
+    "title": title,
+    "price": price,
+    "duration": {
+      "days": duration.days,
+      "nights": duration.nights
+    },
+    "group": group,
+    "gallery": gallery[].asset->url,
+    "tourDates": tourDates[] {
+      startDate,
+      endDate
+    },
+    "tourType": tourType,
+    "season": season,
+    "years": years,
+    "hashtags": hashtags,
+    "isPopular": isPopular
   }
 `;
 
