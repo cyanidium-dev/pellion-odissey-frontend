@@ -58,19 +58,6 @@ export default function AllToursPage() {
     getTours();
   }, []);
 
-  if (loading) {
-    return (
-      <>
-        <Header />
-        <main className={styles.page}>
-          <section className={styles.loaderWrapper}>
-            <Loader />
-          </section>
-        </main>
-      </>
-    );
-  }
-
   if (!tours || !tours.length) return null;
 
   console.log(tours);
@@ -259,17 +246,23 @@ export default function AllToursPage() {
           </div>
         </section>
 
-        <section className={styles.tours}>
-          <div className={styles.toursContainer}>
-            {filtered.length > 0 ? (
-              filtered.map((item, index) => (
-                <LittleCard key={index} item={item}></LittleCard>
-              ))
-            ) : (
-              <p className={styles.noTours}>Нет туров по заданным фильтрам.</p>
-            )}
-          </div>
-        </section>
+        {loading ? (
+          <Loader />
+        ) : (
+          <section className={styles.tours}>
+            <div className={styles.toursContainer}>
+              {filtered.length > 0 ? (
+                filtered.map((item, index) => (
+                  <LittleCard key={index} item={item}></LittleCard>
+                ))
+              ) : (
+                <p className={styles.noTours}>
+                  Нет туров по заданным фильтрам.
+                </p>
+              )}
+            </div>
+          </section>
+        )}
 
         <section className={styles.customTrip} id="customTrip">
           <div className={styles.customTripContainer}>
