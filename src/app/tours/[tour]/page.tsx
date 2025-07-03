@@ -1,21 +1,6 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import styles from "./tour.module.scss";
-import { tourData } from "./data";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { sendMessage } from "@/api/telegram";
-import { Hero } from "./components/hero/hero";
-import { Description } from "./components/description/description";
-import { Includes } from "./components/includes/includes";
-import { Shedule } from "./components/shedule/shedule";
-import { Gallery } from "./components/gallery/gallery";
-import { Founders } from "./components/founders/founders";
-import { Testimonials } from "./components/testimonials/testimonials";
-import { Faq } from "./components/faq/faq";
-import { Booking } from "./components/booking/booking";
-import { Dates } from "./components/dates/dates";
+import TourPage from "./components/tourPage/tourPage";
+import { fetchSanityData } from "@/utils/fetchSanityData";
+import { tourBySlugQuery } from "@/lib/queries";
 
 interface TourData {
   titleTop: string;
@@ -62,45 +47,9 @@ interface tourProps {
   tourData: TourData;
 }
 
-const Tour: React.FC<tourProps> = ({ tourData }) => {
-  useEffect(() => {
-    AOS.init();
-  }, []);
-  return (
-    <div className={styles.container}>
-      {/* Hero Section */}
-      <Hero />
-      <div className={styles.content}>
-        {/* Description Section */}
-        <Description />
+export default async function Page({ params }: { params: { tour: string } }) {
+  const { tour } = await params;
+  const data = await fetchSanityData(tourBySlugQuery, { slug: tour });
 
-        {/* What's Included Section */}
-        <Includes />
-
-        {/* Schedule Section */}
-        <Shedule />
-
-        {/* Gallery Section */}
-        <Gallery />
-
-        {/* Founders Section */}
-        <Founders />
-      </div>
-      {/* Testimonials Section */}
-      <Testimonials />
-
-      <div className={styles.content}>
-        <Dates />
-        {/* FAQ Section */}
-        <Faq />
-      </div>
-
-      {/* Booking Section */}
-      <Booking />
-    </div>
-  );
-};
-
-export default function Page() {
-  return <Tour tourData={tourData} />;
+  return <TourPage tourData={data} />;
 }

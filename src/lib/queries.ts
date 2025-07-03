@@ -51,11 +51,15 @@ export const tourBySlugQuery = `
     "id": _id,
     "slug": slug.current,
     "title": title,
+    "tourPageTitle": tourPageTitle,
     "price": price,
     "duration": {
       "days": duration.days,
       "nights": duration.nights
     },
+    "group": group,
+    "difficulty": difficulty,
+    "image": image.asset->url,
     "gallery": gallery[].asset->url,
     "tourDates": tourDates[]{
       startDate,
