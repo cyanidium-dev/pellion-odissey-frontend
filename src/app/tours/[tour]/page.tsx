@@ -1,6 +1,8 @@
 import TourPage from "./components/tourPage/tourPage";
 import { fetchSanityData } from "@/utils/fetchSanityData";
 import { tourBySlugQuery } from "@/lib/queries";
+import { Suspense } from "react";
+import Loader from "@/components/shared/Loader";
 
 interface TourData {
   titleTop: string;
@@ -51,5 +53,9 @@ export default async function Page({ params }: { params: { tour: string } }) {
   const { tour } = await params;
   const data = await fetchSanityData(tourBySlugQuery, { slug: tour });
 
-  return <TourPage tourData={data} />;
+  return (
+    <Suspense fallback={<Loader />}>
+      <TourPage tourData={data} />
+    </Suspense>
+  );
 }

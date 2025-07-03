@@ -16,7 +16,6 @@ import { Faq } from "./faq/faq";
 import { Booking } from "./booking/booking";
 import { Dates } from "./dates/dates";
 import { TourData } from "@/types/tour";
-import Loader from "@/components/shared/Loader";
 
 interface tourProps {
   tourData: TourData;
