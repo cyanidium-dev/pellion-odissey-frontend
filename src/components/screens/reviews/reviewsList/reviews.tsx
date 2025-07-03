@@ -30,12 +30,7 @@ export const Reviews: React.FC = () => {
     getReviews();
   }, []);
 
-  if (loading)
-    return (
-      // <section className={style.reviews}>
-      <Loader />
-      // </section>
-    );
+  if (loading) return <Loader />;
 
   return (
     <section className={style.reviews}>

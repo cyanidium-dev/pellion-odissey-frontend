@@ -1,20 +1,27 @@
-import React from 'react';
+import React from "react";
 import style from "./galleryItem.module.scss";
 import cn from "classnames";
-import Link from 'next/link';
+import Link from "next/link";
 
 interface Props {
-    img:string,
-    title:string,
-    text:string,
-    className?: string;
+  img: string;
+  title: string;
+  text: string;
+  className?: string;
+  slug: string;
 }
 
-export const GalleryItem: React.FC<Props> = ({ img, title, text, className }) => {
+export const GalleryItem: React.FC<Props> = ({
+  img,
+  title,
+  text,
+  className,
+  slug,
+}) => {
   return (
-    <Link href="/photos">
-      <div 
-        className={cn(style.galleryItem, className)} 
+    <Link href={`/reports/${slug}`}>
+      <div
+        className={cn(style.galleryItem, className)}
         style={{ backgroundImage: `url(${img})` }}
       >
         <div className={style.textContainer}>

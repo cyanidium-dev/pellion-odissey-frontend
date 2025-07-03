@@ -112,3 +112,19 @@ export const allReviewsQuery = `
     "text": text
   }
 `;
+
+export const allReportsQuery = `
+  *[_type == "report"] | order(_createdAt desc) {
+    "id": _id,
+    "slug": slug.current,
+    title,
+    subtitle,
+    country,
+    locations,
+    description,
+    "gallery": gallery[]{
+      "url": asset->url,
+      "alt": alt
+    }
+  }
+`;
