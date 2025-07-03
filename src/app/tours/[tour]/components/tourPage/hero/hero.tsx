@@ -5,8 +5,9 @@ import Image from "next/image";
 import styles from "./hero.module.scss";
 import { useModal } from "@/hooks/useModal";
 import { BookingModal } from "@/components/shared/BookingModal";
+import { TourData } from "@/types/tour";
 
-export const Hero: React.FC = ({ tourData }) => {
+export const Hero = ({ tourData }: { tourData: TourData }) => {
   const { isOpen, open, close } = useModal();
 
   function getPersonWord(n: number) {

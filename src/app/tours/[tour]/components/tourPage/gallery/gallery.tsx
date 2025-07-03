@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./gallery.module.scss";
 import { SectionTitle } from "@/components/shared/SectionTitle";
+import { TourData } from "@/types/tour";
 
-export const Gallery: React.FC = ({ tourData }) => {
+export const Gallery = ({ tourData }: { tourData: TourData }) => {
   const [modalImage, setModalImage] = useState<string | null>(null);
 
   const openModal = (image: string) => setModalImage(image);

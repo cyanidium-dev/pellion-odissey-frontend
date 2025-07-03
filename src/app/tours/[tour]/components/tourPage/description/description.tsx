@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "./description.module.scss";
 import Image from "next/image";
+import { TourData } from "@/types/tour";
 
 import { SectionTitle } from "@/components/shared/SectionTitle";
 
-export const Description: React.FC = ({ tourData }) => {
+export const Description = ({ tourData }: { tourData: TourData }) => {
   return (
     <section className={styles.description}>
       <Image

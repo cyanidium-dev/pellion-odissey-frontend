@@ -3,6 +3,7 @@ import styles from "./dates.module.scss";
 import { SectionTitle } from "@/components/shared/SectionTitle";
 import { format, parseISO, isAfter, isEqual } from "date-fns";
 import { ru } from "date-fns/locale";
+import { TourData } from "@/types/tour";
 
 interface TourDate {
   startDate: string;
@@ -61,7 +62,7 @@ function groupByStartMonth(dates: TourDate[]): GroupedMonthDates[] {
     }));
 }
 
-export const Dates: React.FC = ({ tourData }) => {
+export const Dates = ({ tourData }: { tourData: TourData }) => {
   const formattedTourDates = groupByStartMonth(tourData.tourDates);
 
   return (

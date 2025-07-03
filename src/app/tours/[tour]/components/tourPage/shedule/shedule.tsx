@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./shedule.module.scss";
 import { SectionTitle } from "@/components/shared/SectionTitle";
+import { TourData } from "@/types/tour";
 
-export const Shedule: React.FC = ({ tourData }) => {
+export const Shedule = ({ tourData }: { tourData: TourData }) => {
   return (
     <section className={styles.schedule}>
       <div className={styles.content}>

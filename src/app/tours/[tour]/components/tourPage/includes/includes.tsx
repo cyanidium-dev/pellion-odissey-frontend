@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./includes.module.scss";
 import { SectionTitle } from "@/components/shared/SectionTitle";
+import { TourData } from "@/types/tour";
 
-export const Includes: React.FC = ({ tourData }) => {
+export const Includes = ({ tourData }: { tourData: TourData }) => {
   return (
     <section className={styles.includes}>
       <div className={styles.content}>

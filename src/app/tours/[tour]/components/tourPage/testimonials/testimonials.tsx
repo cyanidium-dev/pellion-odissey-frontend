@@ -2,8 +2,9 @@ import React from "react";
 import Image from "next/image";
 import styles from "./testimonials.module.scss";
 import { SectionTitle } from "@/components/shared/SectionTitle";
+import { TourData } from "@/types/tour";
 
-export const Testimonials: React.FC = ({ tourData }) => {
+export const Testimonials = ({ tourData }: { tourData: TourData }) => {
   return (
     <section className={styles.testimonials}>
       <SectionTitle className={styles.title}>
