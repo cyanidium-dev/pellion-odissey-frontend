@@ -120,9 +120,9 @@ export default function AllToursPage() {
             <div className={styles.typeFilterGroup}>
               <button
                 className={`${styles.typeFilterButton} ${
-                  type === "group" ? styles.active : ""
+                  type === "групповые туры" ? styles.active : ""
                 }`}
-                onClick={() => setType("group")}
+                onClick={() => setType("групповые туры")}
               >
                 ГРУППОВЫЕ ТУРЫ
               </button>
