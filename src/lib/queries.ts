@@ -102,3 +102,13 @@ export const foundersQuery = `
     "foundersAchievementsList": foundersAchievementsList
   }
 `;
+
+export const allReviewsQuery = `
+  *[_type == "review"] {
+    "photo": {
+      "url": photo.asset->url,
+      "alt": photo.alt
+    },
+    "text": text
+  }
+`;
