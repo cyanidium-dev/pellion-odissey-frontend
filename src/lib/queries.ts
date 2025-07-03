@@ -128,3 +128,19 @@ export const allReportsQuery = `
     }
   }
 `;
+
+export const reportBySlugQuery = `
+  *[_type == "report" && slug.current == $slug][0]{
+    "id": _id,
+    title,
+    subtitle,
+    country,
+    locations,
+    description,
+    "slug": slug.current,
+    gallery[] {
+      "url": asset->url,
+      "alt": alt
+    }
+  }
+`;
