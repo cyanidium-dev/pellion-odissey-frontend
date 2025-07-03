@@ -86,6 +86,29 @@ export const tourBySlugQuery = `
       instagram,
       text,
       "photo": photo.asset->url
-    }
+    },
+    "founders": founders
+  }
+`;
+
+export const foundersQuery = `
+  *[_type == "founders"][0] {
+    "foundersImage": foundersImage.asset->url,
+    "foundersImageAlt": foundersImage.alt,
+    "foundersNameLeft": foundersNameLeft,
+    "foundersLeftInstagram": foundersLeftInstagram,
+    "foundersNameRight": foundersNameRight,
+    "foundersRightInstagram": foundersRightInstagram,
+    "foundersAchievementsList": foundersAchievementsList
+  }
+`;
+
+export const allReviewsQuery = `
+  *[_type == "review"] {
+    "photo": {
+      "url": photo.asset->url,
+      "alt": photo.alt
+    },
+    "text": text
   }
 `;

@@ -1,15 +1,42 @@
-import React from "react";
+"use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./founders.module.scss";
-import { tourData } from "../../../data";
+import { fetchSanityData } from "@/utils/fetchSanityData";
+import { foundersQuery } from "@/lib/queries";
+import Loader from "@/components/shared/Loader";
+import { FoundersData } from "@/types/founders";
 
-export const Founders: React.FC = () => {
+export const Founders = () => {
+  const [data, setData] = useState<FoundersData | null>(null);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const result = await fetchSanityData(foundersQuery);
+        setData(result);
+      } catch (error) {
+        console.error("Помилка при завантаженні даних засновників:", error);
+      }
+    };
+
+    getData();
+  }, []);
+
+  if (!data) {
+    return (
+      <section className={styles.founders}>
+        <Loader />
+      </section>
+    );
+  }
+
   return (
     <section className={styles.founders}>
       <div className={styles.foundersCard}>
         <div className={styles.foundersImageBlock}>
           <Image
-            src={tourData.foundersImage}
+            src={data.foundersImage}
             alt="Основатели"
             width={480}
             height={460}
@@ -17,29 +44,29 @@ export const Founders: React.FC = () => {
             priority
           />
           <div className={styles.nameLeft}>
-            {tourData.foundersNameLeft}
+            {data.foundersNameLeft}
             <a
               className={styles.foundersInstagram}
-              href={`https://instagram.com/${tourData.foundersLeftInstagram.replace(
+              href={`https://instagram.com/${data.foundersLeftInstagram.replace(
                 "@",
                 ""
               )}`}
               target="_blank"
             >
-              {tourData.foundersLeftInstagram}
+              {data.foundersLeftInstagram}
             </a>
           </div>
           <div className={styles.nameRight}>
-            {tourData.foundersNameRight}
+            {data.foundersNameRight}
             <a
               className={styles.foundersInstagram}
-              href={`https://instagram.com/${tourData.foundersRightInstagram.replace(
+              href={`https://instagram.com/${data.foundersRightInstagram.replace(
                 "@",
                 ""
               )}`}
               target="_blank"
             >
-              {tourData.foundersRightInstagram}
+              {data.foundersRightInstagram}
             </a>
           </div>
         </div>
@@ -48,11 +75,13 @@ export const Founders: React.FC = () => {
           <h3 className={styles.titleTop}>ОСНОВАТЕЛИ</h3>
           <h2 className={styles.titleBottom}>PELLION ODYSSEY</h2>
           <ul>
-            {tourData.foundersAchievementsList.map((achievement, index) => (
-              <li key={index} className={styles.achievementItem}>
-                {achievement}
-              </li>
-            ))}
+            {data.foundersAchievementsList.map(
+              (achievement: string, index: number) => (
+                <li key={index} className={styles.achievementItem}>
+                  {achievement}
+                </li>
+              )
+            )}
           </ul>
         </div>
       </div>
