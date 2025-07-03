@@ -49,7 +49,11 @@ interface tourProps {
   tourData: TourData;
 }
 
-export default async function Page({ params }: { params: { tour: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ tour: string }>;
+}) {
   const { tour } = await params;
   const data = await fetchSanityData(tourBySlugQuery, { slug: tour });
 
