@@ -112,3 +112,35 @@ export const allReviewsQuery = `
     "text": text
   }
 `;
+
+export const allReportsQuery = `
+  *[_type == "report"] | order(_createdAt desc) {
+    "id": _id,
+    "slug": slug.current,
+    title,
+    subtitle,
+    country,
+    locations,
+    description,
+    "gallery": gallery[]{
+      "url": asset->url,
+      "alt": alt
+    }
+  }
+`;
+
+export const reportBySlugQuery = `
+  *[_type == "report" && slug.current == $slug][0]{
+    "id": _id,
+    title,
+    subtitle,
+    country,
+    locations,
+    description,
+    "slug": slug.current,
+    gallery[] {
+      "url": asset->url,
+      "alt": alt
+    }
+  }
+`;

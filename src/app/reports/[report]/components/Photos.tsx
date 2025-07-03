@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
 import React, { useState } from "react";
 import styles from "./photos.module.scss";
 import Image from "next/image";
-import { photosData } from "./data";
 import { Header } from "@/components/screens/header";
+import { Report } from "@/types/report";
 
-const Photos: React.FC = () => {
+const Photos = ({ photosData }: { photosData: Report }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const openModal = (src: string) => setSelectedImage(src);
@@ -16,18 +16,18 @@ const Photos: React.FC = () => {
     <>
       <Header />
       <div className={styles.container}>
-        <h1 className={styles.title}>{photosData.title}</h1>
-        <h2 className={styles.subtitle}>{photosData.subtitle}</h2>
+        <h1 className={styles.title}>{photosData.subtitle}</h1>
+        <h2 className={styles.subtitle}>{photosData.title}</h2>
         <p className={styles.description}>{photosData.description}</p>
         <div className={styles.gallery}>
           {photosData.gallery.map((image, index) => (
             <div
               key={index}
               className={styles.imageWrapper}
-              onClick={() => openModal(image)}
+              onClick={() => openModal(image.url)}
             >
               <Image
-                src={image}
+                src={image.url}
                 alt={`Photo ${index + 1}`}
                 width={600}
                 height={400}
@@ -40,7 +40,10 @@ const Photos: React.FC = () => {
 
       {selectedImage && (
         <div className={styles.modal} onClick={closeModal}>
-          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
             <button className={styles.closeButton} onClick={closeModal}>
               &times;
             </button>
