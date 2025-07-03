@@ -21,8 +21,7 @@ export const PopularToursList: React.FC = () => {
     const getTours = async () => {
       try {
         const data = await fetchSanityData(allPopularToursQuery);
-        console.log(data);
-        setTours(data);
+        setTours(data.slice(0, 3));
       } catch (error) {
         console.error("Error fetching tours:", error);
       } finally {

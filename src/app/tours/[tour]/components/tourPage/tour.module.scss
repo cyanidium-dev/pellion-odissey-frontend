@@ -1,0 +1,15 @@
+@use "@/assets/style/variables" as *;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+// Base styles
+.container {
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.6;
+  color: $text-color;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

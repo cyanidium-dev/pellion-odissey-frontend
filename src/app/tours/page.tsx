@@ -60,8 +60,6 @@ export default function AllToursPage() {
 
   if (!tours || !tours.length) return null;
 
-  console.log(tours);
-
   // Get active seasons as array
   const activeSeasons = Object.entries(seasons)
     .filter(([_, isActive]) => isActive)
@@ -70,17 +68,12 @@ export default function AllToursPage() {
   // Filter tours based on selected criteria
   const filtered = tours.filter((tour) => {
     const matchesType = tour.tourType === type;
-    console.log(matchesType);
     const matchesYear = tour.years?.includes(year);
-    console.log(matchesYear);
     const matchesSeason =
       activeSeasons.length === 0 ||
       tour.season?.some((s: string) => activeSeasons.includes(s));
-    console.log(matchesSeason);
     return matchesType && matchesYear && matchesSeason;
   });
-
-  console.log(filtered);
 
   // Toggle individual season
   const toggleSeason = (season: any) => {
@@ -127,9 +120,9 @@ export default function AllToursPage() {
             <div className={styles.typeFilterGroup}>
               <button
                 className={`${styles.typeFilterButton} ${
-                  type === "group" ? styles.active : ""
+                  type === "групповые туры" ? styles.active : ""
                 }`}
-                onClick={() => setType("group")}
+                onClick={() => setType("групповые туры")}
               >
                 ГРУППОВЫЕ ТУРЫ
               </button>

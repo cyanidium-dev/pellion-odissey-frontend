@@ -1,0 +1,87 @@
+@use "../../../../../../assets/style/variables" as *;
+
+.description {
+  padding-top: 360px;
+  padding-bottom: 70px;
+
+  .palm {
+    position: absolute;
+    transform: rotate(43deg);
+    bottom: -450px;
+    left: -194px;
+    animation: peekingOutPalm 2.5s infinite alternate ease-in-out;
+    filter: blur(2px);
+  }
+
+  @keyframes peekingOutPalm {
+    0% {
+      transform: rotateZ(55deg);
+    }
+    100% {
+      transform: rotateZ(43deg);
+    }
+  }
+
+  .descriptionText {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    text-align: center;
+    max-width: 1200px;
+    margin: 40px 0 auto;
+    color: $blue;
+  }
+
+  @media (max-width: 900px) {
+    .palm {
+      width: 300px;
+      height: 300px;
+      bottom: -380px;
+      left: -110px;
+    }
+  }
+  @media (max-width: 700px) {
+    padding-top: 300px;
+    .palm {
+      width: 300px;
+      height: 300px;
+      bottom: -300px;
+      left: -110px;
+    }
+    .descriptionText {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .palm {
+      bottom: -300px;
+      left: -110px;
+    }
+  }
+
+  @media (max-width: 490px) {
+    padding-top: 30px;
+    .palm {
+      display: none;
+    }
+    .descriptionText {
+      font-size: 1rem;
+      max-width: 800px;
+      margin-top: 10px;
+    }
+    .descriptionTitle {
+      font-size: 45px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .descriptionText {
+      font-size: 0.9rem;
+      line-height: 1.2rem;
+      max-width: none;
+    }
+    .descriptionTitle {
+      font-size: 40px;
+    }
+  }
+}

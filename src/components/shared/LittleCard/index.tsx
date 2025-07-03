@@ -31,7 +31,6 @@ export const LittleCard = ({ item }: { item: any }) => {
 
   const nearest = getNearestDateRange(item.tourDates);
 
-  console.log(item);
   return (
     <div className={styles.tourCard}>
       <div className={styles.tourImage}>
